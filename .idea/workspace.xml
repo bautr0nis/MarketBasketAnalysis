@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54d608db-dda9-4c86-b4d0-47ae470bfd61" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/IND2_ML_Model.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.RData" beforeDir="false" afterPath="$PROJECT_DIR$/.RData" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rhistory" beforeDir="false" afterPath="$PROJECT_DIR$/.Rhistory" afterDir="false" />
+    <list default="true" id="54d608db-dda9-4c86-b4d0-47ae470bfd61" name="Changes" comment="NewFile">
+      <change afterPath="$PROJECT_DIR$/4 - Deep Reinforced Learning/custom_env.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4 - Deep Reinforced Learning/dqn_agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4 - Deep Reinforced Learning/test_dqn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4 - Deep Reinforced Learning/train_dqn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/6 - notebooks/DNN.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/6 - notebooks/Decision-tree.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/6 - notebooks/RandomForest + XGBOOST.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IND1.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/IND1.Rmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bank.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/filtered_seq_patterns_out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/image/Reikalavimai.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seq_patterns_out.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/IND2_ML_Model.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/6 - notebooks/IND2_ML_Model.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +23,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Python Script" />
         <option value="Jupyter Notebook" />
       </list>
     </option>
@@ -72,6 +73,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/6 - notebooks" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -89,7 +95,7 @@
       <option name="presentableId" value="Default" />
       <updated>1726838106399</updated>
       <workItem from="1726838108917" duration="9457000" />
-      <workItem from="1726892987233" duration="20133000" />
+      <workItem from="1726892987233" duration="28790000" />
     </task>
     <task id="LOCAL-00001" summary="NewFile">
       <option name="closed" value="true" />
@@ -99,7 +105,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726851328552</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="NewFile">
+      <option name="closed" value="true" />
+      <created>1726913926337</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726913926337</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
