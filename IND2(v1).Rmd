@@ -1,0 +1,181 @@
+---
+title: "IND2"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Duomenų imties pažinimas
+```{r}
+# Install and load necessary packages
+if (!"pacman" %in% rownames(installed.packages())) install.packages("pacman")
+require(pacman)
+pacman::p_load(nnet, caret, randomForest, e1071, ROCR, precrec, dplyr, tidyr)
+
+# Load the data
+file_path <- 'data/german.data'  # Replace with the correct path to your file
+D <- read.table(file_path, header = FALSE, sep = "", stringsAsFactors = TRUE)
+
+# Assign column names to the dataset (assuming the dataset has 21 columns)
+colnames(D) <- paste0("V", 1:21)
+
+# Summarize the data
+summary(D)
+str(D)
+table(D$V21)  # Distribution of the target variable
+
+# Set target variable (V21) and prepare the data
+colY <- "V21"
+myData <- D
+idxY <- which(colnames(myData) %in% colY)
+myData[, idxY] <- factor(myData[, idxY], labels = c("Class1", "Class2"))  # Adjust class labels
+```
+##Duomenų dalijimas į train / test imtis
+```{r}
+# Split the data into training and test sets (80/20)
+set.seed(123)
+trainIndex <- createDataPartition(myData[, colY], p = .8, list = FALSE)
+trainData <- myData[trainIndex, ]
+testData <- myData[-trainIndex, ]
+```
+
+## Triju modeliu parinkimas
+```{r}
+# 1st Model: Random Forest
+rf_model <- randomForest(as.factor(V21) ~ ., data = trainData, ntree = 100)
+print(rf_model)
+
+# 2nd Model: SVM
+svm_tune <- caret::train(as.factor(V21) ~ ., 
+                         data = trainData, 
+                         method = "svmRadial", 
+                         trControl = trainControl(method = "cv", number = 5, classProbs = TRUE), 
+                         tuneLength = 10)
+
+# Print the best SVM model found during tuning
+print(svm_tune)
+
+######################### 3rd Model: Neural Network #####################
+# Neural Network using the nnet package
+nn_model <- caret::train(as.factor(V21) ~ ., 
+                         data = trainData, 
+                         method = "nnet", 
+                         trControl = trainControl(method = "cv", number = 5, classProbs = TRUE), 
+                         tuneLength = 10, 
+                         linout = FALSE, trace = FALSE, maxit = 200)
+
+# Print the best Neural Network model found during tuning
+print(nn_model)
+
+```
+
+## Modeliu parametru derinimas
+```{r}
+# Random Forest: Adjust parameters and handle class imbalance
+# Check the number of instances in each class
+table(trainData$V21)
+
+# Use the minimum number of instances from each class to set sampsize
+min_class_size <- min(table(trainData$V21))
+
+# Train Random Forest with class imbalance handling (undersampling the majority class)
+rf_model_imb <- randomForest(as.factor(V21) ~ ., data = trainData, ntree = 100, 
+                             strata = trainData$V21, sampsize = rep(min_class_size, 2))
+
+# Print the model summary
+print(rf_model_imb)
+```
+
+## Klasifikavimo rezultatu vertinimas
+```{r}
+# Initialize an empty data frame to store results
+myResults <- data.frame()
+
+# Make predictions for Random Forest
+rf_pred <- predict(rf_model_imb, testData, type = "prob")[, 2]
+rf_results <- data.frame(tstInd = 1:length(rf_pred), model = "RandomForest", score = rf_pred, target = as.numeric(testData$V21) - 1)
+
+# Make predictions for SVM
+svm_pred <- predict(svm_tune, testData, type = "prob")[, 2]
+svm_results <- data.frame(tstInd = 1:length(svm_pred), model = "SVM", score = svm_pred, target = as.numeric(testData$V21) - 1)
+
+# Make predictions for Neural Network
+nn_pred <- predict(nn_model, testData, type = "prob")[, 2]
+nn_results <- data.frame(tstInd = 1:length(nn_pred), model = "NeuralNetwork", score = nn_pred, target = as.numeric(testData$V21) - 1)
+
+# Combine results into a single data frame
+myResults <- rbind(rf_results, svm_results, nn_results)
+
+######################### ROC Curves #####################
+myModels <- unique(myResults$model)
+myModelNames <- NULL
+
+for (i in 1:length(myModels)) {
+  model_results <- myResults[myResults$model == myModels[i], ]
+  roc_pred <- prediction(model_results$score, model_results$target)
+  perf <- performance(roc_pred, "tpr", "fpr")
+  
+  auc <- performance(roc_pred, measure = "auc")@y.values[[1]]
+  myModelNames[i] <- sprintf('%s AUC=%5.3f', myModels[i], auc)
+  
+  plot(perf, col = i, main = "ROC Curves for All Models", add = i != 1)
+}
+
+legend("bottomright", legend = myModelNames, col = 1:length(myModels), lty = 1)
+
+######################### DET Curves #####################
+myModelNames <- NULL
+for (i in 1:length(myModels)) {
+  model_results <- myResults[myResults$model == myModels[i], ]
+  roc_pred <- prediction(model_results$score, model_results$target)
+  det_perf <- performance(roc_pred, "err", "fpr")  # DET is based on error vs FPR
+  
+  plot(det_perf, col = i, main = "DET Curves for All Models", add = i != 1)
+  
+  eer <- min(det_perf@y.values[[1]])  # Equal Error Rate (EER) is where DET crosses
+  myModelNames[i] <- sprintf('%s EER=%5.2f%%', myModels[i], eer * 100)
+}
+
+legend("topright", legend = myModelNames, col = 1:length(myModels), lty = 1)
+
+######################### Precision-Recall Curves #####################
+# Prepare the data for Precision-Recall
+myScores <- spread(myResults, model, score)
+
+# Generate PRC curves using precrec
+# Prepare the data for Precision-Recall
+myScores <- spread(myResults, model, score)
+
+# Generate PRC curves using precrec
+# Ensure that `posclass` matches the positive class in `target`, which should be `1`
+msmdat <- mmdata(myScores[,-c(1, 2)], myScores[, "target"], posclass = 1, modnames = myModels)
+
+# Plot Precision-Recall Curves
+autoplot(evalmod(msmdat), "PRC", main = "Precision-Recall Curves for All Models")
+
+
+######################### AUC and Model Comparison #####################
+# Calculate AUC for all models
+rf_auc <- performance(prediction(rf_results$score, rf_results$target), measure = "auc")@y.values[[1]]
+svm_auc <- performance(prediction(svm_results$score, svm_results$target), measure = "auc")@y.values[[1]]
+nn_auc <- performance(prediction(nn_results$score, nn_results$target), measure = "auc")@y.values[[1]]
+
+cat("Random Forest AUC:", rf_auc, "\n")
+cat("SVM AUC:", svm_auc, "\n")
+cat("Neural Network AUC:", nn_auc, "\n")
+```
+
+## Geriausio modelio parinkimas pagal AUC
+```{r}
+if (rf_auc > svm_auc & rf_auc > nn_auc) {
+  cat("Random Forest is the better model with AUC:", rf_auc, "\n")
+} else if (svm_auc > rf_auc & svm_auc > nn_auc) {
+  cat("SVM is the better model with AUC:", svm_auc, "\n")
+} else {
+  cat("Neural Network is the better model with AUC:", nn_auc, "\n")
+}
+```
+
+
+
+
