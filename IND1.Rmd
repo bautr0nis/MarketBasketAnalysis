@@ -25,7 +25,7 @@ library(arules)
 library(arulesViz)
 
 # Load the data
-data <- read.csv("data/bank.csv")
+data <- read.csv("2 - Data/bank.csv")
 
 # Check the structure and first few rows of the data
 str(data)
@@ -47,7 +47,7 @@ itemFrequencyPlot(transactions, topN=10, type="absolute", main="Top 10 Bank Tran
 ## 2. Taisyklių stiprumo įverčių apskaičiavimas (1 balas)
 ```{r, echo=FALSE}
 # Apriori algoritmas taisyklėms išgauti
-bank.rules <- apriori(transactions, parameter = list(support = 0.002, confidence = 0.5, target = "rules", minlen = 2))
+bank.rules <- apriori(transactions, parameter = list(support = 0.002, confidence = 0.3, target = "rules", minlen = 2))
 
 # Summary of the rules generated
 summary(bank.rules)
