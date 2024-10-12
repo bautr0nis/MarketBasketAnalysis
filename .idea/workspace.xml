@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54d608db-dda9-4c86-b4d0-47ae470bfd61" name="Changes" comment="NewFile">
-      <change afterPath="$PROJECT_DIR$/4 - Deep Reinforced Learning/custom_env.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4 - Deep Reinforced Learning/dqn_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4 - Deep Reinforced Learning/test_dqn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4 - Deep Reinforced Learning/train_dqn.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/6 - notebooks/DNN.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/6 - notebooks/Decision-tree.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/6 - notebooks/RandomForest + XGBOOST.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/6 - notebooks/SVM.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.RData" beforeDir="false" afterPath="$PROJECT_DIR$/.RData" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.Rhistory" beforeDir="false" afterPath="$PROJECT_DIR$/.Rhistory" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IND2_ML_Model.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/6 - notebooks/IND2_ML_Model.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/6 - notebooks/IND2_ML_Model.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/6 - notebooks/IND2_ML_Model.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IND2(v1).Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/IND2(v1).Rmd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,19 +57,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "development",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;development&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/6 - notebooks" />
@@ -95,7 +92,10 @@
       <option name="presentableId" value="Default" />
       <updated>1726838106399</updated>
       <workItem from="1726838108917" duration="9457000" />
-      <workItem from="1726892987233" duration="28790000" />
+      <workItem from="1726892987233" duration="29164000" />
+      <workItem from="1726987582914" duration="5240000" />
+      <workItem from="1727269853701" duration="600000" />
+      <workItem from="1728731155181" duration="1335000" />
     </task>
     <task id="LOCAL-00001" summary="NewFile">
       <option name="closed" value="true" />
@@ -113,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726913926337</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="NewFile">
+      <option name="closed" value="true" />
+      <created>1726944650448</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726944650448</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,5 +164,16 @@
     <MESSAGE value="New file" />
     <MESSAGE value="NewFile" />
     <option name="LAST_COMMIT_MESSAGE" value="NewFile" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
+          <url>notebook:///Users/zydrunasbautronis/Documents/KTU/202409 Vidiniu Verslo Duomenu Projektas/6 - notebooks/SVM.ipynb</url>
+          <line>63</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
