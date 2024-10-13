@@ -13,7 +13,7 @@ require(pacman)
 pacman::p_load(nnet, caret, randomForest, e1071, ROCR, precrec, dplyr, tidyr)
 
 # Load the data
-file_path <- 'data/german.data'  # Replace with the correct path to your file
+file_path <- '2 - Data/german.data'  # Replace with the correct path to your file
 D <- read.table(file_path, header = FALSE, sep = "", stringsAsFactors = TRUE)
 
 # Assign column names to the dataset (assuming the dataset has 21 columns)
