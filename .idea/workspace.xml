@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54d608db-dda9-4c86-b4d0-47ae470bfd61" name="Changes" comment="NewFile">
-      <change afterPath="$PROJECT_DIR$/6 - notebooks/MojoExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/6 - notebooks/IND2_ML_Model.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/6 - notebooks/IND2_ML_Model.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/6 - notebooks/keras-sequetial.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/6 - notebooks/test.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/6 - notebooks/automl(h2o).ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/6 - notebooks/automl(h2o).ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/6 - notebooks/automl(h2o).ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/6 - notebooks/model(GBM).png" beforeDir="false" afterPath="$PROJECT_DIR$/3 - Results/model(GBM).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/6 - notebooks/tree_0.png" beforeDir="false" afterPath="$PROJECT_DIR$/3 - Results/tree_0.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +71,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/3 - Results" />
       <recent name="$PROJECT_DIR$/6 - notebooks" />
     </key>
   </component>
@@ -97,7 +96,7 @@
       <workItem from="1726987582914" duration="5240000" />
       <workItem from="1727269853701" duration="600000" />
       <workItem from="1728731155181" duration="22814000" />
-      <workItem from="1728905558558" duration="1624000" />
+      <workItem from="1728905558558" duration="6903000" />
     </task>
     <task id="LOCAL-00001" summary="NewFile">
       <option name="closed" value="true" />
