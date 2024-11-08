@@ -47,7 +47,7 @@ itemFrequencyPlot(transactions, topN=10, type="absolute", main="Top 10 Bank Tran
 ## 2. Taisyklių stiprumo įverčių apskaičiavimas (1 balas)
 ```{r, echo=FALSE}
 # Apriori algoritmas taisyklėms išgauti
-bank.rules <- apriori(transactions, parameter = list(support = 0.004, confidence = 0.3, target = "rules", minlen = 3))
+bank.rules <- apriori(transactions, parameter = list(support = 0.005, confidence = 0.3, target = "rules", minlen = 3))
 
 # Summary of the rules generated
 summary(bank.rules)
@@ -276,6 +276,32 @@ if (length(results) == 0 || all(sapply(results, function(x) is.null(avg(x))))) {
   plot(results, "prec/rec", annotate = c(1, 4), legend = "right")  # Pakeistos anotacijos
 }
 
+
+```
+```{r}
+
+scheme <- evaluationScheme(binary_matrix, method = "cross", k = 3, given = -1)
+
+# Apibreziu skirtingus algoritmus palyginimui su asociacijų taisyklėmis
+algorithms <- list(
+  `AR conf = 0.1` = list(name = "AR", param = list(supp = 0.005, conf = 0.1)),
+  `AR conf = 0.2` = list(name = "AR", param = list(supp = 0.01, conf = 0.2)),
+  `AR conf = 0.05` = list(name = "AR", param = list(supp = 0.001, conf = 0.05)),
+  `AR conf = 0.3` = list(name = "AR", param = list(supp = 0.05, conf = 0.3)),
+  `AR conf = 0.4` = list(name = "AR", param = list(supp = 0.02, conf = 0.4))
+)
+
+# Atlieku algoritmų įvertinimą
+results <- evaluate(scheme, algorithms, n = 1:4)
+
+# Patikriname, ar 'results' nėra tuščias arba turi duomenų
+if (length(results) == 0 || all(sapply(results, function(x) is.null(avg(x))))) {
+  cat("Klaida: Bent vienas algoritmas nepateikė rezultatų. Patikrinkite duomenis ir parametrus.\n")
+} else {
+  # Pateikiame rezultatų grafiką su tinkama 'annotate' reikšme
+  plot(results, annotate = c(1, 4), legend = "right")  # Pakeistos anotacijos
+  plot(results, "prec/rec", annotate = c(1, 4), legend = "right")  # Pakeistos anotacijos
+}
 
 ```
 
