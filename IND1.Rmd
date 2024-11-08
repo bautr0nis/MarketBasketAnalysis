@@ -47,7 +47,7 @@ itemFrequencyPlot(transactions, topN=10, type="absolute", main="Top 10 Bank Tran
 ## 2. Taisyklių stiprumo įverčių apskaičiavimas (1 balas)
 ```{r, echo=FALSE}
 # Apriori algoritmas taisyklėms išgauti
-bank.rules <- apriori(transactions, parameter = list(support = 0.002, confidence = 0.3, target = "rules", minlen = 2))
+bank.rules <- apriori(transactions, parameter = list(support = 0.004, confidence = 0.3, target = "rules", minlen = 3))
 
 # Summary of the rules generated
 summary(bank.rules)
@@ -80,8 +80,10 @@ print(head(seq_data))
 # Išsaugome duomenis kaip CSV failą, kad galėtume naudoti read_baskets funkciją
 write.table(seq_data, "sequences_data.csv", sep = ",", row.names = FALSE, col.names = FALSE, quote = FALSE)
 
+sequences2 <- read_baskets("sequences_data.csv", sep = ",", info = c("sequenceID", "eventID", "SIZE"))
+
 # Naudojame cspade algoritmą su žemu support lygiu sekų taisyklėms išgauti
-s6 <- cspade(sequences, parameter = list(support = 0.0133), control = list(verbose = TRUE, timeout = 15))
+s6 <- cspade(sequences2, parameter = list(support = 0.0133), control = list(verbose = TRUE, timeout = 15))
 
 # Patikriname, ar support reikšmės teisingos
 k <- support(s6, sequences, control = list(verbose = TRUE))
@@ -110,13 +112,13 @@ print(head(sorted_rules, 20))
 
 # Eclat algoritmas dažnoms prekėms išgauti
 itemsets <- eclat(transactions,
-                  parameter = list(supp = 0.002, minlen = 3))
+                  parameter = list(supp = 0.005, minlen = 3))
 
 # Print the frequent itemsets found by Eclat
 itemsets
 
 # Create rules from the frequent itemsets
-eclat_rules <- ruleInduction(itemsets, transactions, confidence = 0.5)
+eclat_rules <- ruleInduction(itemsets, transactions, confidence = 0.3)
 eclat_rules
 
 # Find common rules (intersection) between Apriori and Eclat results
