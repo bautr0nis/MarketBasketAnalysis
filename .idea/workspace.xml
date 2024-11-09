@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54d608db-dda9-4c86-b4d0-47ae470bfd61" name="Changes" comment="NewFile">
-      <change beforePath="$PROJECT_DIR$/.RData" beforeDir="false" afterPath="$PROJECT_DIR$/.RData" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.Rhistory" beforeDir="false" afterPath="$PROJECT_DIR$/.Rhistory" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3 - Results/reydata-profiling.html" beforeDir="false" afterPath="$PROJECT_DIR$/3 - Results/reydata-profiling.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/6 - notebooks/IND2_ML_Model.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/6 - notebooks/IND2_ML_Model.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/6 - notebooks/automl(h2o).ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/6 - notebooks/automl(h2o).ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IND1.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/IND1.Rmd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +100,8 @@
       <workItem from="1729781804788" duration="48000" />
       <workItem from="1729962045215" duration="59000" />
       <workItem from="1730106329615" duration="617000" />
-      <workItem from="1731083791328" duration="8042000" />
+      <workItem from="1731083791328" duration="15938000" />
+      <workItem from="1731153783496" duration="392000" />
     </task>
     <task id="LOCAL-00001" summary="NewFile">
       <option name="closed" value="true" />
